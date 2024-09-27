@@ -1,0 +1,37 @@
+{{define "signIn"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authorization Page</title>
+  <link rel="stylesheet" href="templates/css/signIn.css">
+  
+</head>
+<body>
+  
+  <div class="container">
+    <div class="auth-box">
+      <h2>Welcome Back</h2>
+      <!-- Поменять хендлер -->
+      <form action="/checkform" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name = "username" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password"  name = "password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+
+      </form>
+      <div class="sign-up">
+        <a href="/" class="sign-up">Sign up</a>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>
+{{end}}
