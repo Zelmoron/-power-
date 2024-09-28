@@ -3,8 +3,6 @@ package service
 import (
 	"app/internal/utils"
 	"context"
-	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 
@@ -37,14 +35,14 @@ func jwtMiddleware(next http.Handler) http.Handler {
 
 		}
 
-		roles, ok := claims["sub"].(string)
+		user, ok := claims["sub"].(string)
 		if !ok {
 			log.Printf("Roles not found in token")
 			http.Redirect(w, r, "http://localhost:8080/signIn", http.StatusSeeOther)
 
 		}
 
-		ctx := context.WithValue(r.Context(), "sub", roles)
+		ctx := context.WithValue(r.Context(), "sub", user)
 		r = r.WithContext(ctx)
 
 		// Передача запроса на следующий обработчик
@@ -60,28 +58,15 @@ func Handlers() {
 	http.Handle("/templates/",
 		http.StripPrefix("/templates", http.FileServer(http.Dir("./templates/"))))
 
-	rtr.HandleFunc("/signIn", SignIn).Methods("GET") // обработчик страницы авторизации
-	// rtr.HandleFunc("/signUp", service.SignUp).Methods("GET")        // обработчик страницы регистрации
-	http.Handle("/index", jwtMiddleware(http.HandlerFunc(handleIndex))) // обработчик главной страницы
-	// Приватный подмаршрутизатор
+	rtr.HandleFunc("/signIn", SignIn).Methods("GET")              // обработчик страницы авторизации
+	rtr.HandleFunc("/signUp", SignUp).Methods("GET")              // обработчик страницы регистрации
+	http.Handle("/index", jwtMiddleware(http.HandlerFunc(Index))) // обработчик главной страницы
+
 	rtr.HandleFunc("/checkform", CheckForm).Methods("POST") // обработчик для проверки пароля и логина страницы
+	rtr.HandleFunc("/checkReg", CheckReg).Methods("POST")   // обработчик для проверки пароля и логина страницы
 
 	http.Handle("/", rtr) // все обраоботчики через роутер
 
 	// privateRouter.HandleFunc("/index", handleIndex)
-
-}
-
-func handleIndex(w http.ResponseWriter, r *http.Request) {
-	userId := r.Context().Value("sub").(string)
-
-	fmt.Println(userId)
-	tmpl, err := template.ParseFiles("templates/html/index.html")
-
-	if err != nil {
-		log.Println("Ошибка обработки html")
-		return
-	}
-	tmpl.ExecuteTemplate(w, "index", nil)
 
 }

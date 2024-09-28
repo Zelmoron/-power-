@@ -1,0 +1,233 @@
+
+body{
+    background-color: #1e1e1e;
+}
+.navbar-toggler{
+    border: none;
+}
+.navbar-brand{
+    font-size: 35px;
+    color:  rgb(123, 121, 119);
+}
+.navbar-brand:hover{
+    color:  rgb(123, 121, 119);
+}
+.navbar{
+    height: 100px;
+    transition: 100s;
+    background:#2c2c2c;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
+    
+    
+}
+
+
+.nav-link{
+    color:  rgb(123, 121, 119);
+    font-weight: 600;
+    font-size: 25px;
+    position: relative;
+}
+.nav-link:hover{
+    transform: scale(1.05);
+}
+.nav-link:hover, .nav-link.active{ 
+    color: rgb(122, 5, 5);
+}
+
+.nav-link::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background-color: rgb(100, 4, 4);
+    transition: 0.3s ease-in-out;
+    visibility: hidden;
+
+}
+.nav-link:hover::before, .nav-link.active::before{
+    width: 100%;
+    visibility: visible;
+
+}
+
+
+.graf{
+    
+    height: 555px;
+    width: 100%;
+    margin-top: 100px;
+    text-align: center;
+    
+
+}
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.item{
+    display: flex;
+}
+
+.profile{
+    text-decoration: none;
+    font-size: 30px;
+    color:rgb(123, 121, 119);
+}
+.profile:hover{
+    transform: scale(1.05);
+}
+
+.Logo{
+    display: flex;
+}
+
+.hameleon1{
+    font-size:50px;
+    
+    animation: colorChange 4s infinite linear;
+
+}
+.hameleon2{
+    font-size:50px;
+    
+    animation: colorChange 4s infinite linear;
+    animation-delay:0.5s;
+}
+.hameleon3{
+    font-size:50px;
+ 
+    animation: colorChange 4s infinite linear;
+    animation-delay:1s;
+}
+.hameleon4{ 
+    font-size:50px;
+   
+    animation: colorChange  4s infinite linear;
+    animation-delay:1.5s;
+}
+.hameleon5{
+    font-size:50px;
+ 
+    animation: colorChange  4s infinite linear;
+    animation-delay:2s;
+}
+@keyframes colorChange {
+    0% {
+      color: rgb(87, 82, 82);
+    }
+    50%{
+        color: rgb(100, 4, 4);
+    }
+    100%{
+        color: rgb(87, 82, 82);
+    }
+  }
+
+
+  
+.main-container{
+    margin-top: 200px;
+    height: 100%;
+    display: flex ;
+    
+}
+#myChart{
+    width:1000px;
+    max-width:1000px;
+    height: 100%; 
+    margin:0 auto;
+    background-color: #a34545;
+}
+
+
+
+
+
+footer{
+    background-color: #2c2c2c;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+p{
+    color:  rgb(123, 121, 119);
+}
+.footer__made{
+    margin-top: 3%;
+    text-align: center;
+}
+
+
+@media (max-width:1000px) {
+    .nav-link{
+        font-size: 23px;
+    }
+    #myChart{
+        width:700px;
+        max-width:700px;
+        height: 100%; 
+        margin:0 auto;
+        background-color: #7a2828;
+    }
+    
+}
+
+
+@media (max-width:690px) {
+    .profile{
+        font-size: 20px;
+    }
+    .main-container{
+        height: 500px;
+        margin-top: 180px;
+    }
+    #myChart{
+        width:500;
+        max-width:500px;
+        height: 100%; 
+        margin:0 auto;
+        background-color: #7a2828;
+    }
+    
+}
+
+@media (max-width:530px) {
+    .main-container{
+        height: 500px;
+        margin-top: 180px;
+    }
+    #myChart{
+        width:400px;
+        max-width:500px;
+        height: 100%; 
+        margin:0 auto;
+        background-color: #7a2828;
+    }
+    
+}
+
+@media (max-width:440px) {
+    .main-container{
+        height: 500px;
+        margin-top: 180px;
+    }
+    #myChart{
+        width:350px;
+        max-width:400px;
+        height: 100%; 
+        margin:0 auto;
+        background-color: #7a2828;
+    }
+    
+}
